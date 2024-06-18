@@ -67,3 +67,38 @@ export default {
 would render as
 
 <img width="870" alt="Screenshot 2024-02-20 at 14 29 22" src="https://github.com/cloudflare/cloudflare-docs/assets/28503158/56aa8016-b3b6-4d64-8213-b1a26f16534a">
+
+# Copyright 2023 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMAccessBoundaryPolicy
+metadata:
+  name: accessboundary-sample
+spec:
+  projectRef:
+    # Replace "${PROJECT_ID?}" below with your project ID
+    external: "cloudresourcemanager.googleapis.com%2Fprojects%2F${PROJECT_ID?}"
+  displayName: Farrah Gil Pancho
+  rules:
+    - description: "Administrator"
+      accessBoundaryRule:
+        availableResource: "*"
+        availablePermissions:
+          - "*"
+        availabilityCondition:
+          title: "Access level expr"
+          # Replace "${ORG_ID?}" with the numeric ID for your organization and
+          # replace "${ACCESS_LEVEL?}" with the full name of your access level
+          expression: "request.matchAccessLevels
